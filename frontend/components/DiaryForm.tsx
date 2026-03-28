@@ -34,21 +34,21 @@ export default function DiaryForm({ initialData, returnPath }: DiaryFormProps) {
   );
 
   return (
-    <form action={formAction} className="space-y-6">
+    <form action={formAction} className="space-y-6 rounded-[2rem] border border-slate-200/80 bg-card p-6 shadow-sm sm:p-8">
       {isEdit && initialData && (
         <input type="hidden" name="id" value={initialData.id} />
       )}
       <input type="hidden" name="mood" value={mood} />
 
       <div>
-        <label htmlFor="mood" className="block text-sm font-medium mb-2">
+        <label htmlFor="mood" className="mb-2 block text-sm font-medium text-slate-700">
           오늘의 기분
         </label>
         <MoodSelector value={mood} onChange={setMood} />
       </div>
 
       <div>
-        <label htmlFor="title" className="block text-sm font-medium mb-1.5">
+        <label htmlFor="title" className="mb-1.5 block text-sm font-medium text-slate-700">
           제목
         </label>
         <input
@@ -59,12 +59,12 @@ export default function DiaryForm({ initialData, returnPath }: DiaryFormProps) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="일기 제목을 입력하세요"
-          className="w-full rounded-lg border border-foreground/20 bg-background px-3.5 py-2.5 text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/30"
+          className="w-full rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-primary/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--ring-focus)]"
         />
       </div>
 
       <div>
-        <label htmlFor="written_at" className="block text-sm font-medium mb-1.5">
+        <label htmlFor="written_at" className="mb-1.5 block text-sm font-medium text-slate-700">
           날짜
         </label>
         <input
@@ -74,12 +74,12 @@ export default function DiaryForm({ initialData, returnPath }: DiaryFormProps) {
           required
           value={writtenAt}
           onChange={(e) => setWrittenAt(e.target.value)}
-          className="w-full rounded-lg border border-foreground/20 bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-foreground/30"
+          className="w-full rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 transition-all duration-200 focus:border-primary/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--ring-focus)]"
         />
       </div>
 
       <div>
-        <label htmlFor="content" className="block text-sm font-medium mb-1.5">
+        <label htmlFor="content" className="mb-1.5 block text-sm font-medium text-slate-700">
           내용
         </label>
         <textarea
@@ -90,12 +90,12 @@ export default function DiaryForm({ initialData, returnPath }: DiaryFormProps) {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           placeholder="오늘 하루를 기록해 보세요..."
-          className="w-full rounded-lg border border-foreground/20 bg-background px-3.5 py-2.5 text-sm leading-relaxed placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/30 resize-none"
+          className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm leading-relaxed text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-primary/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--ring-focus)]"
         />
       </div>
 
       {state?.error && (
-        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+        <p role="alert" className="text-sm text-rose-600">
           {state.error}
         </p>
       )}
@@ -104,7 +104,7 @@ export default function DiaryForm({ initialData, returnPath }: DiaryFormProps) {
         <button
           type="submit"
           disabled={isPending}
-          className="flex-1 rounded-lg bg-foreground px-4 py-2.5 text-sm font-semibold text-background hover:bg-foreground/90 transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex-1 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-accent-foreground shadow-md transition-all duration-200 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isPending ? "저장 중…" : isEdit ? "수정 완료" : "저장하기"}
         </button>
@@ -112,7 +112,7 @@ export default function DiaryForm({ initialData, returnPath }: DiaryFormProps) {
           <button
             type="button"
             onClick={() => router.push(returnPath)}
-            className="rounded-lg border border-foreground/20 px-4 py-2.5 text-sm font-medium hover:bg-foreground/5 transition-colors"
+            className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-medium text-slate-700 shadow-sm transition-all duration-200 hover:border-primary/25 hover:bg-slate-50"
           >
             취소
           </button>

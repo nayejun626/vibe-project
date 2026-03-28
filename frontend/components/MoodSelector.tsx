@@ -9,16 +9,16 @@ interface MoodSelectorProps {
 
 export default function MoodSelector({ value, onChange }: MoodSelectorProps) {
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-wrap gap-2">
       {MOODS.map((mood) => (
         <button
           key={mood}
           type="button"
           onClick={() => onChange(mood)}
-          className={`flex h-11 w-11 items-center justify-center rounded-xl text-xl transition-all ${
+          className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl transition-all duration-200 ${
             value === mood
-              ? "bg-foreground/10 ring-2 ring-foreground/40 scale-110"
-              : "hover:bg-foreground/5"
+              ? "scale-105 bg-primary/10 shadow-sm ring-2 ring-accent ring-offset-2 ring-offset-card"
+              : "bg-slate-50 hover:bg-slate-100"
           }`}
         >
           {mood}

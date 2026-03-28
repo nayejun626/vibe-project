@@ -10,11 +10,11 @@ export default function SignupPage() {
   const [state, formAction, isPending] = useActionState(signup, initialState);
 
   return (
-    <div className="flex min-h-full items-center justify-center px-4">
-      <div className="w-full max-w-sm space-y-8">
+    <div className="flex min-h-full items-center justify-center bg-background px-4 py-12">
+      <div className="w-full max-w-md space-y-8 rounded-[2rem] border border-slate-200/80 bg-card p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] sm:p-10">
         <div className="text-center">
-          <h1 className="text-3xl font-bold tracking-tight">📒 나만의 일기장</h1>
-          <p className="mt-2 text-sm text-foreground/60">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900">📒 나만의 일기장</h1>
+          <p className="mt-2 text-sm text-muted">
             새 계정을 만들고 일기를 시작하세요
           </p>
         </div>
@@ -22,7 +22,7 @@ export default function SignupPage() {
         <form action={formAction} className="space-y-5">
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
+              <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-700">
                 이메일
               </label>
               <input
@@ -32,12 +32,12 @@ export default function SignupPage() {
                 required
                 autoComplete="email"
                 placeholder="you@example.com"
-                className="w-full rounded-lg border border-foreground/20 bg-background px-3.5 py-2.5 text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/30"
+                className="w-full rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-primary/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--ring-focus)]"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="mb-1.5 block text-sm font-medium">
+              <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-slate-700">
                 비밀번호
               </label>
               <input
@@ -47,14 +47,14 @@ export default function SignupPage() {
                 required
                 autoComplete="new-password"
                 placeholder="••••••••"
-                className="w-full rounded-lg border border-foreground/20 bg-background px-3.5 py-2.5 text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/30"
+                className="w-full rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-primary/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--ring-focus)]"
               />
             </div>
 
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="mb-1.5 block text-sm font-medium"
+                className="mb-1.5 block text-sm font-medium text-slate-700"
               >
                 비밀번호 확인
               </label>
@@ -65,13 +65,13 @@ export default function SignupPage() {
                 required
                 autoComplete="new-password"
                 placeholder="••••••••"
-                className="w-full rounded-lg border border-foreground/20 bg-background px-3.5 py-2.5 text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/30"
+                className="w-full rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-primary/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--ring-focus)]"
               />
             </div>
           </div>
 
           {state?.error && (
-            <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+            <p role="alert" className="text-sm text-rose-600">
               {state.error}
             </p>
           )}
@@ -79,17 +79,17 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={isPending}
-            className="w-full rounded-lg bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-full bg-accent px-4 py-3.5 text-sm font-semibold text-accent-foreground shadow-md transition-all duration-200 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isPending ? "가입 중…" : "가입하기"}
           </button>
         </form>
 
-        <p className="text-center text-sm text-foreground/60">
+        <p className="text-center text-sm text-muted">
           이미 계정이 있으신가요?{" "}
           <Link
             href="/login"
-            className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80"
+            className="font-semibold text-primary underline-offset-4 transition-colors duration-200 hover:text-primary/80 hover:underline"
           >
             로그인
           </Link>
