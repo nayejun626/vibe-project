@@ -11,14 +11,14 @@ function isValidHttpUrl(value: string | undefined): value is string {
   }
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
   if (!isValidHttpUrl(supabaseUrl) || !supabaseAnonKey) {
     if (process.env.NODE_ENV !== "production") {
       console.warn(
-        "[middleware] NEXT_PUBLIC_SUPABASE_URL must be a full https URL (e.g. https://xxxx.supabase.co) and NEXT_PUBLIC_SUPABASE_ANON_KEY must be set in .env.local. Skipping Supabase auth for this request."
+        "[proxy] NEXT_PUBLIC_SUPABASE_URL must be a full https URL (e.g. https://xxxx.supabase.co) and NEXT_PUBLIC_SUPABASE_ANON_KEY must be set in .env.local. Skipping Supabase auth for this request."
       );
       return NextResponse.next();
     }
