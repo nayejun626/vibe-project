@@ -1,0 +1,19 @@
+---
+description: Next.js App Router 라우팅·데이터 페칭·Route Handler·서버 우선 패턴
+globs: app/**/*
+---
+
+# Next.js App Router
+
+## 해야 할 것
+
+- 라우트·레이아웃·로딩·에러 UI는 **`app/`** 아래에 둔다 (`page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx` 등).
+- 서버에서 할 수 있는 데이터 페칭은 **서버 컴포넌트**, **Route Handler** (`app/api/.../route.ts`), **Server Actions**를 우선한다.
+- 이미지·링크·폰트는 `next/image`, `next/link`, `next/font` 등 **Next 권장 API**를 쓴다.
+- 브라우저 전용 API나 훅이 **필요한 파일에만** `"use client"`를 둔다. 나머지는 기본적으로 서버 컴포넌트로 둔다.
+
+## 하면 안 되는 것
+
+- **`pages/` 라우터만으로 새 기능을 만들지 않는다.** (레거시가 없으면 App Router만.)
+- App Router와 Pages Router를 **같은 목적의 라우트에 혼용**하지 않는다.
+- 서버로 충분한데 **불필요한 `"use client"`**로 페이지·레이아웃 전체를 클라이언트로 만들지 않는다.
